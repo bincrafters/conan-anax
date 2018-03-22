@@ -28,7 +28,7 @@ class LibnameConan(ConanFile):
     # Anax cannot currently build the shared libraries:
     # https://github.com/miguelmartin75/anax/issues/78
     options = {"fPIC": [True, False]}
-    default_options = "shared=False", "fPIC=True"
+    default_options = "fPIC=True"
 
     # Custom attributes for Bincrafters recipe conventions
     source_subfolder = "source_subfolder"
