@@ -1,8 +1,9 @@
-#include <cstdlib>
-#include <iostream>
+#include <anax/anax.hpp>
 
 int main()
 {
-    std::cout << "Bincrafters\n";
+    // Create a world
+    anax::World world;
+
     return EXIT_SUCCESS;
 }
