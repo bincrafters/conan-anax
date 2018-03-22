@@ -27,7 +27,7 @@ class LibnameConan(ConanFile):
     settings = "os", "arch", "compiler", "build_type"
     # Anax cannot currently build the shared libraries:
     # https://github.com/miguelmartin75/anax/issues/78
-    options = {"shared": [False], "fPIC": [True, False]}
+    options = {"fPIC": [True, False]}
     default_options = "shared=False", "fPIC=True"
 
     # Custom attributes for Bincrafters recipe conventions
@@ -50,7 +50,7 @@ class LibnameConan(ConanFile):
 
     def configure_cmake(self):
         cmake = CMake(self)
-        cmake.definitions["BUILD_SHARED_LIBS"] = self.options.shared
+        cmake.definitions["BUILD_SHARED_LIBS"] = False
         if self.settings.os != 'Windows':
             cmake.definitions['CMAKE_POSITION_INDEPENDENT_CODE'] = self.options.fPIC
         cmake.configure(build_folder=self.build_subfolder)
