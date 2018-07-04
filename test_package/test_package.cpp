@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <anax/anax.hpp>
 
 int main()
