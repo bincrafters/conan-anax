@@ -6,16 +6,16 @@ from conans import ConanFile, CMake, tools
 
 class LibnameConan(ConanFile):
     name = "anax"
+    version = "11d310c"
+    homepage = "https://github.com/miguelmartin75/anax"
     scm = {
         "type": "git",
-        "subfolder": "anax",
-        "url": "https://github.com/miguelmartin75/anax.git",
-        "revision": "11d310cdcae8a343171dd9b03b573781893d27f1"
+        "subfolder": name,
+        "url": homepage,
+        "revision": version
     }
-    version = scm["revision"][:7]
     description = "An open source C++ entity system"
     url = "https://github.com/bincrafters/conan-anax"
-    homepage = "https://github.com/miguelmartin75/anax"
     license = "MIT"
     exports = ["LICENSE.md"]
     exports_sources = ["CMakeLists.txt"]
