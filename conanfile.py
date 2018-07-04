@@ -2,17 +2,12 @@
 # -*- coding: utf-8 -*-
 
 from conans import ConanFile, CMake, tools
+import os
 
 
 class LibnameConan(ConanFile):
     name = "anax"
-    scm = {
-        "type": "git",
-        "subfolder": "anax",
-        "url": "https://github.com/miguelmartin75/anax.git",
-        "revision": "11d310cdcae8a343171dd9b03b573781893d27f1"
-    }
-    version = scm["revision"][:7]
+    version = "2.1.0"
     description = "An open source C++ entity system"
     url = "https://github.com/bincrafters/conan-anax"
     homepage = "https://github.com/miguelmartin75/anax"
@@ -24,10 +19,16 @@ class LibnameConan(ConanFile):
     options = {"fPIC": [True, False]}
     default_options = "fPIC=True"
     build_subfolder = "build_subfolder"
+    source_subfolder = "source_subfolder"
 
-    def configure(self):
+    def config_options(self):
         if self.settings.os == 'Windows':
             del self.options.fPIC
+
+    def source(self):
+        tools.get("{0}/archive/v{1}.tar.gz".format(self.homepage, self.version))
+        extracted_dir = self.name + "-" + self.version
+        os.rename(extracted_dir, self.source_subfolder)
 
     def configure_cmake(self):
         cmake = CMake(self)
@@ -40,7 +41,7 @@ class LibnameConan(ConanFile):
         cmake.build()
 
     def package(self):
-        self.copy(pattern="LICENSE", dst="licenses", src="anax")
+        self.copy(pattern="LICENSE", dst="licenses", src=self.source_subfolder)
         cmake = self.configure_cmake()
         cmake.install()
 
