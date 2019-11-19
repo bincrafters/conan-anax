@@ -8,7 +8,6 @@ class LibnameConan(ConanFile):
     description = "An open source C++ entity system"
     url = "https://github.com/bincrafters/conan-anax"
     homepage = "https://github.com/miguelmartin75/anax"
-    author = "Bincrafters <bincrafters@gmail.com>"
     license = "MIT"
     exports = ["LICENSE.md"]
     exports_sources = ["CMakeLists.txt"]
