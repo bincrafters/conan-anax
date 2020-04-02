@@ -9,7 +9,6 @@ class LibnameConan(ConanFile):
     url = "https://github.com/bincrafters/conan-anax"
     homepage = "https://github.com/miguelmartin75/anax"
     license = "MIT"
-    exports = ["LICENSE.md"]
     exports_sources = ["CMakeLists.txt"]
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
